@@ -2,6 +2,8 @@
 
 [![CMake](https://github.com/Algorithms-and-Data-Structures-2021/semester-work-kruskal-11-006/actions/workflows/cmake.yml/badge.svg)](https://github.com/Algorithms-and-Data-Structures-2021/semester-work-kruskal-11-006/actions/workflows/cmake.yml)
 
+Алгоритм Краскала предназначен для нахождения минимального остовного дерева, т.е. такого подграфа который бы имел столько же компонент связности, сколько и исходный, но не содержал петель и сумма весов всех его ребер была бы минимальной.
+
 Алгоритм Краскала:
 
 1. Сортируем ребра графа по возрастанию весов.
