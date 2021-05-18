@@ -1,27 +1,22 @@
 #pragma once
-
-// Заголовочный файл с объявлением структуры данных
+#include "vector"
+#include "private/edge.hpp" // ребро графа
 
 namespace itis {
 
-  // Tip 1: объявите здесь необходимые структуры, функции, константы и прочее
 
-  // Пример: объявление константы времени компиляции в заголовочном файле
-  inline constexpr auto kStringConstant = "Hello, stranger!";
-
-  // Пример: объявление структуры с полями и методами
-  struct MyStructure {
+  struct Graph{
    public:
-    int size_{0};
-    int capacity_{0};
-    int* data_{nullptr};
 
-    // Tip 2: На начальном этапе разработки структуры данных можете определения методов задавать в
-    // заголовочном файле, как только работа будет завершена, можно будет оставить здесь только объявления.
+    std::vector<Edge> graph;
 
-    int size() const {
-      return size_;
+    void AddEdge(int f, int s, int w)
+    {
+      Edge edge(f, s, w);
+      graph.push_back(edge);
     }
+
+
   };
 
-}  // namespace itis
+}
