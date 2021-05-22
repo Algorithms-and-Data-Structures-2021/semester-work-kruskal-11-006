@@ -63,26 +63,20 @@ _В этом разделе задаются основые требования
 
 _Инструкция по сборке проекта, генерации тестовых данных, запуска контрольных тестов и примеров работы._
 
-_Постарайтесь написать инструкцию так, чтобы незнакомый с проектом человек смог самостоятельно всё запустить._
-
-### Пример (Windows)
-
-#### Сборка проекта
-
-_Опишите процесс сборки проекта._
+#### Сборка проекта (Windows)
 
 Склонируйте проект к себе на устройство через [Git for Windows](https://gitforwindows.org/) (либо используйте
 возможности IDE):
 
 ```shell
-git clone https://github.com/Algorithms-and-Data-Structures-2021/semester-work-template.git
+git clone https://github.com/Algorithms-and-Data-Structures-2021/semester-work-kruskal-11-006.git
 ```
 
 Для ручной сборки проекта в терминале введите:
 
 ```shell
 # переход в папку с проектом
-cd C:\Users\username\asd-projects\semester-work-template
+cd C:\Users\username\asd-projects\semester-work-kruskal-11-006
 
 # создание папки для файлов сборки (чтобы не засорять папку с проектом) 
 mkdir -p build && cd build 
