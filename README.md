@@ -3,7 +3,8 @@
 [![CMake](https://github.com/Algorithms-and-Data-Structures-2021/semester-work-kruskal-11-006/actions/workflows/cmake.yml/badge.svg)](https://github.com/Algorithms-and-Data-Structures-2021/semester-work-kruskal-11-006/actions/workflows/cmake.yml)
 
 Алгоритм Краскала предназначен для нахождения минимального остовного дерева, т.е. такого подграфа который бы имел столько же компонент связности, сколько и исходный, но не содержал петель и сумма весов всех его ребер была бы минимальной. Алгоритм впервые описан Джзефом Крускалом в 1956 году.
-
+ 
+Далее представлены взвешенный связный неориентированный граф и его остов.
 ![Пример графа G](https://github.com/Algorithms-and-Data-Structures-2021/semester-work-kruskal-11-006/blob/main/screenshot/%D0%BF%D1%80%D0%B5%D0%B2%D1%8C%D1%8E.jpg) 
 ![Пример остовного дерева графа G](https://github.com/Algorithms-and-Data-Structures-2021/semester-work-kruskal-11-006/blob/main/screenshot/%D0%BE%D1%81%D1%82%D0%BE%D0%B2.jpg)
 
