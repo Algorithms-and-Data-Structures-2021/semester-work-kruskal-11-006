@@ -35,7 +35,7 @@ target_compile_definitions(project_paths INTERFACE
 
 add_library(${PROJECT_NAME} STATIC
         src/graph.cpp
-        include/graph.hpp include/edge.hpp src/algorithm.cpp include/algorithm.h src/edge.cpp)
+        include/graph.hpp include/edge.hpp src/algorithm.cpp include/algorithm.h src/edge.cpp examples/example.cpp)
 
 # включить предупреждения компилятора для библиотеки (линковка)
 target_link_libraries(${PROJECT_NAME} PRIVATE project_warnings)

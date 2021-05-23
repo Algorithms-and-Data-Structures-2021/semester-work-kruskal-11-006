@@ -10,15 +10,15 @@ namespace itis {
 
   struct Graph {
    public:
+   vector<Edge> graph; // вектор, который будет содержать в себе все ребра графа
+   int edge_amount = 0; // общее количество ребер
 
-   vector<Edge> graph;
+   explicit Graph(); // конструктор
 
-   int edge_amount = 0;
+   void AddEdge(int first_, int second_, int weight_); // добавить ребро в граф
 
-   explicit Graph();
+   void Clear(); // очистить граф
 
-   void AddEdge(int first_, int second_, int weight_);
-
-   void Clear();
+    virtual ~Graph(); // деструктор, то же самое, что Clear()
   };
 }

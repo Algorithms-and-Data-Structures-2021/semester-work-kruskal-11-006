@@ -41,27 +41,34 @@ int main() {
         auto input_file =
             ifstream(input_path + "/" + "algorithm/" + folder + "/" + file + ".csv");  // файл с входными данными
 
-        // создаем 2-3 деревво по данным из входного файла и закрываем его
+        // создаем граф по данным из входного файла и закрываем его
         if (input_file) {
           while (line != "") {
             getline(input_file, line);
             if (line == "") {
               break;
             }
+
+            // разбиваем строку на 3 числа и завписываем в вектор
             stringstream in(line);
             vector<int> a;
             int temp;
             while (in >> temp){
               a.push_back(temp);
             }
+
+            // добавляем ребро в граф при помощи данных в  векторе, далее очищаем вектор
             graph.AddEdge(a[0], a[1], a[2]);
             a.clear();
           }
         }
         input_file.close();
+
+        // обновляем данные в алгоритме для нового графа
         kruskal.Kruskal_update(graph.edge_amount);
         line = "1";
 
+        // здесь находится участок кода, время которого необходимо замерить
         const auto time_point_before_algorithm = chrono::steady_clock::now();
         kruskal.createMST(graph);
         const auto time_point_after_algorithm = chrono::steady_clock::now();
@@ -80,7 +87,7 @@ int main() {
         output_file << folder << "," << file << "," << 1 << "," << time_elapsed_ns_remove << endl;
       }
     }
-//  }
+  }
 
   //закрываем файл для записи
   output_file.close();

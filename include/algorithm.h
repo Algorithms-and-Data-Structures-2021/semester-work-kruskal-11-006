@@ -8,32 +8,26 @@ namespace itis{
   class Kruskal {
 
    public:
-    int totalVertices = 0;//total vertices
+    int totalVertices = 0; // количество вершин
+    vector<pair<int,int>> subsets; // подмножества будут содержать список пар [родитель - ранг]
+    vector<Edge> mst;// вектор, который содержит минимальное остовное дерево
 
-    vector<pair<int,int>> subsets;
-    // subsets will hold list of [parent - rank] pairs
-    // which we will use in Union Find
-    // by path compression algorithm
+    explicit Kruskal(); // конструктор
 
-    vector<Edge> mst;//declare a container to store edges of MST
+    void Clear(); // очистка данных в алгоритме
 
-    //constructor
-    explicit Kruskal();
+    void Kruskal_update(int totalVertices); // обновление данных о графе в алгоритме
 
-    void Clear();
+    static bool comparator( Edge &a , Edge& b); // сравнивает вес ребер, используется в сортировке ребер по величине
 
-    void Kruskal_update(int totalVertices);
+    void createMST( Graph& graph); // создает минимальное остовное дерево
 
-    virtual ~Kruskal();
+    int _find(  int i); // поиск повторяющихся вершин в подмножестве, нужен для построения остовного дерева
 
-    static bool comparator( Edge &a , Edge& b);
+    void makeUnion( int x, int y); // вспомогательная функция, нужна для построения остовного дерева
 
-    void createMST( Graph& graph);
+    void displayMST(  const vector<Edge>&  edges); // выводит минимальное остовное дерево
 
-    int _find(  int i);
-
-    void makeUnion( int x, int y);
-
-    void displayMST(  const vector<Edge>&  edges);
+    virtual ~Kruskal(); // деструктор, то же самое, что и Clear()
   };
 }

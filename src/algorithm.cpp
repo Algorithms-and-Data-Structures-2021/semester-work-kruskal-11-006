@@ -8,17 +8,18 @@ namespace itis {
 
   void Kruskal::Kruskal_update(int Vertices){
     totalVertices = Vertices;
-    subsets.resize(Vertices);
-      //resize subsets equal to total vertices
+    subsets.resize(Vertices); //изменение размера подмножеств, равных общему количеству вершин
 
       for( int i= 0; i<totalVertices; ++i)
       {
-        subsets[i].first =i; //set parent value equal to respective index
-        subsets[i].second = 0; //set rank value equal to zero
+        subsets[i].first =i; //установить значение родителя, равное соответствующему индексу
+        subsets[i].second = 0; //установить значение ранга равным нулю
       }
     }
 
   void Kruskal::Clear() {
+
+    // очищаем подмножества и остовное дерево, обнуляем количество граней
     subsets.clear();
     mst.clear();
     totalVertices = 0;
@@ -31,47 +32,35 @@ namespace itis {
 
   void Kruskal::createMST( Graph& graph)
   {
-    //sort the edges of graph in increasing order of their weights
-    sort( graph.graph.begin(), graph.graph.end(), comparator );
+    sort( graph.graph.begin(), graph.graph.end(), comparator ); // сортировка ребер графа в порядке возрастания их весов
 
     int i=0, e=0;
-    // i =  variable to keep track of total vertices
-    // e = variable to keep track of total edges in MST formed so far
-    // total edges in MST  == (total vertices - 1)
+    // i = переменная для отслеживания общего количества вершин
+    // e = переменная для отслеживания общего количества созданных ребер в остове
 
-    //iterate through list of edges in a graph
-    while( e < (totalVertices-1) && i < graph.graph.size() )
+    while( e < (totalVertices-1) && i < graph.graph.size() ) // проходим по списку ребер в графе
     {
-      //store current edge
-      Edge currEdge = graph.graph[i++];
+      Edge currEdge = graph.graph[i++]; // хранит текущее ребро
 
-      //find absolute parent
-      //to detect if current edge form a cycle with MST formed so far
-      int x = _find( currEdge.first);//pass current source vertex
-      int y = _find( currEdge.second);//pass current destination vertex
+      //определяем, образует ли текущее ребро цикл в остове, сформированным до сих пор
+      int x = _find( currEdge.first);
+      int y = _find( currEdge.second);
 
-      if( x != y)//is they don't form a cycle
+      if( x != y) // если они не образуют цикл
       {
-        //push current edge to MST
-        mst.push_back( currEdge );
-        //then make that two vertex Union
-        // in other words to create edge between two vertices
-        makeUnion( x, y);
+        mst.push_back( currEdge ); // добавляем текущее ребро в остов
+        makeUnion( x, y); // объединяем две вершини, дргуими словами, создаем ребро между этими вершинами
       }
     }
 
-    //finally display the MST created by the above function
-    displayMST( mst );
+    displayMST( mst ); // отображаем остов, созданный вышеуказанной функцией
 
   }
 
   int Kruskal::_find(  int i){
-    if( subsets[i].first!=i)//if index is not equal to parent value
+    if( subsets[i].first!=i)
     {
-      //recursively call _find()
-      // and pass current parent value
-      subsets[i].first = _find( subsets[i].first );
-
+      subsets[i].first = _find( subsets[i].first ); // рекурсивно проходим по всем подмножествам
     }
 
     return subsets[i].first;
@@ -82,7 +71,6 @@ namespace itis {
     int xroot = _find( x);
     int yroot = _find(y);
 
-    // if-else for rank comparison & update parent-rank values
     if( subsets[xroot].second < subsets[yroot].second)
     {
       subsets[xroot].first= yroot;
@@ -104,7 +92,7 @@ namespace itis {
 
     for( auto edge : edges)
     {
-//      cout<<edge.first<<" - "<<edge.second<<" = "<<edge.weight<<'\n';
+      cout<<edge.first<<" - "<<edge.second<<" = "<<edge.weight<<'\n';
       totalMinimumCost+=edge.weight;
     }
     cout<<"total minimum cost = "<<totalMinimumCost<<endl;
@@ -113,5 +101,4 @@ namespace itis {
   Kruskal::~Kruskal() {
     Clear();
   }
-
 }
